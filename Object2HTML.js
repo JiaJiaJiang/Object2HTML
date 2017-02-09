@@ -20,6 +20,12 @@ function Object2HTML(obj){
 			ele[o]=obj.prop[o];
 		}
 	}
+	//events
+	if(typeof obj.event === 'object'){
+		for(o in obj.event){
+			ele.addEventListener(o,obj.event[o]);
+		}
+	}
 	//childNodes
 	if(typeof obj.child === 'object' && obj.child.length>0){
 		for(o of obj.child){
