@@ -29,7 +29,7 @@ function Object2HTML(obj){
 	//childNodes
 	if(typeof obj.child === 'object' && obj.child.length>0){
 		for(o of obj.child){
-			e=Object2HTML(o);
+			e=(o instanceof HTMLElement)?o:Object2HTML(o);
 			(e instanceof HTMLElement)&&ele.appendChild(e);
 		}
 	}
