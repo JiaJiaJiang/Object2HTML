@@ -30,8 +30,8 @@ function Object2HTML(obj,func){
 	//childNodes
 	if(typeof obj.child === 'object' && obj.child.length>0){
 		for(o of obj.child){
-			e=(o instanceof HTMLElement)?o:Object2HTML(o,func);
-			(e instanceof HTMLElement)&&ele.appendChild(e);
+			e=(o instanceof Node)?o:Object2HTML(o,func);
+			(e instanceof Node)&&ele.appendChild(e);
 		}
 	}
 	func&&func(ele);
