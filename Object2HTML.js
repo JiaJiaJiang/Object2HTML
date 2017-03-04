@@ -38,4 +38,5 @@ function Object2HTML(obj,func){
 	return ele;
 }
 
+export default Object2HTML;
 export {Object2HTML}
