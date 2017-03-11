@@ -29,10 +29,10 @@ function Object2HTML(obj,func){
 	}
 	//childNodes
 	if(typeof obj.child === 'object' && obj.child.length>0){
-		for(o of obj.child){
+		obj.child.forEach(o=>{
 			e=(o instanceof Node)?o:Object2HTML(o,func);
 			(e instanceof Node)&&ele.appendChild(e);
-		}
+		});
 	}
 	func&&func(ele);
 	return ele;
