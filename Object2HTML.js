@@ -2,38 +2,25 @@
 Copyright luojia@luojia.me
 LGPL license
 */
+function _Obj(t){return (typeof t == 'object');}
 
 function Object2HTML(obj,func){
 	let ele,o,e;
 	if(typeof obj==='string')return document.createTextNode(obj);//text node
-	if('_' in obj === false)return;//if it dont have a _ prop to specify a tag
-	if(typeof obj._ !== 'string' || obj._=='')return;
+	if('_' in obj === false || typeof obj._ !== 'string' || obj._=='')return;//if it dont have a _ prop to specify a tag
 	ele=document.createElement(obj._);
 	//attributes
-	if(typeof obj.attr === 'object'){
-		for(o in obj.attr){
-			ele.setAttribute(o,obj.attr[o]);
-		}
-	}
+	if(_Obj(obj.attr))for(o in obj.attr)ele.setAttribute(o,obj.attr[o]);
 	//properties
-	if(typeof obj.prop === 'object'){
-		for(o in obj.prop){
-			ele[o]=obj.prop[o];
-		}
-	}
+	if(_Obj(obj.prop))for(o in obj.prop)ele[o]=obj.prop[o];
 	//events
-	if(typeof obj.event === 'object'){
-		for(o in obj.event){
-			ele.addEventListener(o,obj.event[o]);
-		}
-	}
+	if(_Obj(obj.event))for(o in obj.event)ele.addEventListener(o,obj.event[o]);
 	//childNodes
-	if(typeof obj.child === 'object' && obj.child.length>0){
+	if(_Obj(obj.child)&&obj.child.length>0)
 		obj.child.forEach(o=>{
 			e=(o instanceof Node)?o:Object2HTML(o,func);
 			(e instanceof Node)&&ele.appendChild(e);
 		});
-	}
 	func&&func(ele);
 	return ele;
 }
