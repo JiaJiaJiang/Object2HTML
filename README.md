@@ -1,12 +1,14 @@
 #Object2HTML
 
 用于把以下格式的对象转换成HTML元素
+
 Convert the following formated object to a HTMLElement
 
 ``````
 {_:'tagname',
 	attr:{},//attributes
 	prop:{},//properties
+	event:{},//events
 	child:[/*other object*/]//childNodes
 }
 ``````
