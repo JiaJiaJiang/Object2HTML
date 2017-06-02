@@ -6,9 +6,10 @@ function _Obj(t){return (typeof t == 'object');}
 
 function Object2HTML(obj,func){
 	let ele,o,e;
-	if(typeof obj==='string' ||typeof obj==='number')return document.createTextNode(obj);//text node
-	if(obj===null || typeof obj !=='object' || '_' in obj === false || typeof obj._ !== 'string' || obj._=='')return;//if it dont have a _ prop to specify a tag
-	ele=document.createElement(obj._);
+	if(typeof obj==='string' ||typeof obj==='number')ele=document.createTextNode(obj);//text node
+	else if(obj instanceof Node)ele=obj;
+	else if(obj===null || typeof obj !=='object' || '_' in obj === false || typeof obj._ !== 'string' || obj._=='')return;//if it dont have a _ prop to specify a tag
+	ele||(ele=document.createElement(obj._));
 	//attributes
 	if(_Obj(obj.attr))for(o in obj.attr)ele.setAttribute(o,obj.attr[o]);
 	//properties
@@ -18,7 +19,7 @@ function Object2HTML(obj,func){
 	//childNodes
 	if(_Obj(obj.child)&&obj.child.length>0)
 		obj.child.forEach(o=>{
-			e=(o instanceof Node)?o:Object2HTML(o,func);
+			e=Object2HTML(o,func);
 			(e instanceof Node)&&ele.appendChild(e);
 		});
 	func&&func(ele);
