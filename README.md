@@ -1,6 +1,6 @@
 # Object2HTML
 
-![toDataURI-logo](https://jiajiajiang.github.io/staticRepo/Object2HTML/logo.png)
+![logo](https://jiajiajiang.github.io/staticRepo/Object2HTML/logo.png)
 
 用于把以下格式的对象转换成HTML元素
 
