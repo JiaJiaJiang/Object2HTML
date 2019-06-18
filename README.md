@@ -2,8 +2,6 @@
 
 ![logo](https://jiajiajiang.github.io/staticRepo/Object2HTML/logo.png)
 
-用于把以下格式的对象转换成HTML元素
-
 Convert the following formated object to a HTMLElement
 
 ``````
@@ -11,16 +9,29 @@ Convert the following formated object to a HTMLElement
 	attr:{},//attributes
 	prop:{},//properties
 	event:{},//events
-	child:[/*other object*/]//childNodes
+	child:[/*other objects*/]//childNodes
 }
 ``````
 
 ## Usage
 
+```shell
+npm i object2html
+```
+
+Then import or require it in your code depends on your environment:
+
+```javascrip
+import {Object2HTML} from 'path/to/object2html';
+//or
+const {Object2HTML} = require('object2html');
+```
+
+
 
 ## Object2HTML(object[,func]);
 
-* object : the object to convert to HTML,or a string(will be convert to a text node)
-* func : (optional)a function to be called after every HTMLElement created,the parameter is the element.
+* object : The object to be converted to dom element, or a string(will be converted to a text node).
+* func : (optional) A function to be called after every element created, the parameter is the element.
 
-return the HTMLElement converted from the object.
+Return the dom element.

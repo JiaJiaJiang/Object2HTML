@@ -2,7 +2,7 @@
   "name": "object2html",
   "version": "1.0.0",
   "description": "generate dom from object",
-  "main": "Object2HTML.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
