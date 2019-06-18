@@ -1,0 +1,19 @@
+{
+  "name": "object2html",
+  "version": "1.0.0",
+  "description": "generate dom from object",
+  "main": "Object2HTML.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JiaJiaJiang/Object2HTML.git"
+  },
+  "author": "luojia@luojia.me",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/JiaJiaJiang/Object2HTML/issues"
+  },
+  "homepage": "https://github.com/JiaJiaJiang/Object2HTML#readme"
+}
