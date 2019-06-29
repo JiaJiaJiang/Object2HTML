@@ -2,26 +2,30 @@
 Copyright luojia@luojia.me
 LGPL license
 */
-function _Obj(t){return (typeof t == 'object');}
 
 function Object2HTML(obj,func){
-	let ele,o,e;
+	let ele,o={},a=[];
 	if(typeof obj==='string' ||typeof obj==='number')ele=document.createTextNode(obj);//text node
 	else if(obj instanceof Node)ele=obj;
-	else if(obj===null || typeof obj !=='object' || '_' in obj === false || typeof obj._ !== 'string' || obj._=='')return;//if it dont have a _ prop to specify a tag
-	ele||(ele=document.createElement(obj._));
-	//attributes
-	if(_Obj(obj.attr))for(o in obj.attr)ele.setAttribute(o,obj.attr[o]);
-	//properties
-	if(_Obj(obj.prop))for(o in obj.prop)ele[o]=obj.prop[o];
-	//events
-	if(_Obj(obj.event))for(o in obj.event)ele.addEventListener(o,obj.event[o]);
-	//childNodes
-	if(_Obj(obj.child)&&obj.child.length>0)
-		obj.child.forEach(o=>{
-			e=Object2HTML(o,func);
+	else{
+		if(obj===null || typeof obj !=='object')throw(new Error('Not an object'));
+		if(!obj._)obj._='div';
+		ele||(ele=document.createElement(obj._));
+		//attributes
+		for(let [attr,value] of Object.entries(obj.attr||obj.a||o))
+			ele.setAttribute(attr,value);
+		//properties
+		for(let [prop,value] of Object.entries(obj.prop||obj.p||o))
+			ele[prop]=value;
+		//events
+		for(let [e,cb] of Object.entries(obj.event||obj.e||o))
+			ele.addEventListener(e,cb);
+		//childNodes
+		for(let c of (obj.child||obj.c||a)){
+			let e=Object2HTML(c,func);
 			(e instanceof Node)&&ele.appendChild(e);
-		});
+		}
+	}
 	func&&func(ele);
 	return ele;
 }

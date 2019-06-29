@@ -4,14 +4,14 @@
 
 Convert the following formated object to a HTMLElement
 
-``````
-{_:'tagname',
-	attr:{},//attributes
-	prop:{},//properties
-	event:{},//events
-	child:[/*other objects*/]//childNodes
+```javascript
+{_:'tagname',//defaults to 'div' if not defined
+	attr||a:{},//attributes
+	prop||p:{},//properties
+	event||e:{},//events
+	child||c:[/*other objects*/]//childNodes
 }
-``````
+```
 
 ## Usage
 
@@ -21,7 +21,7 @@ npm i object2html
 
 Then import or require it in your code depends on your environment:
 
-```javascrip
+```javascript
 import {Object2HTML} from 'path/to/object2html';
 //or
 const {Object2HTML} = require('object2html');
