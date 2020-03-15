@@ -3,6 +3,7 @@
   "version": "1.1.2",
   "description": "generate dom from object",
   "main": "Object2HTML.js",
+  "module": "Object2HTML.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
