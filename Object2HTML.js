@@ -2,13 +2,12 @@
 Copyright luojia@luojia.me
 LGPL license
 */
-
 function Object2HTML(obj,func){
 	let ele,o={},a=[];
-	if(typeof obj==='string' ||typeof obj==='number')ele=document.createTextNode(obj);//text node
+	if(obj===null || typeof obj !=='object')ele=document.createTextNode(String(obj));//text node
 	else if(obj instanceof Node)ele=obj;
 	else{
-		if(obj===null || typeof obj !=='object')throw(new Error('Not an object'));
+		if(obj===undefined)throw(new TypeError(`'undefined' received, object or string expect.`));
 		if(!obj._)obj._='div';
 		ele||(ele=document.createElement(obj._));
 		//attributes
